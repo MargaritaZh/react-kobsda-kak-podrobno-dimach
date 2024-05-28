@@ -41,7 +41,7 @@ export function Rating(props: RatingPropsType) {
     //         </div>
     //     )
     // }
-  //                   .......
+    //                   .......
     // return (
     //     <div>
     //         <Star selected={false}/>

@@ -12,8 +12,8 @@ function App() {
     return (
         <div className={"App"}>
 
-            <OnOff/>
-            <OnOff/>
+            {/*<OnOff/>*/}
+            {/*<OnOff/>*/}
 
             <UncontrolledAccordion titleValue={"Menu"}/>
             <UncontrolledAccordion titleValue={"Users"}/>
@@ -21,8 +21,8 @@ function App() {
             <UncontrolledRating />
 
             {/*<Rating value={3}/>*/}
-            <Accordion titleValue={"Menu"} collapsed={false}/>
-
+            {/*<Accordion titleValue={"Menu"} collapsed={false}/>*/}
+            {/**/}
 
             {/*<PageTitle title={"This is App component"}/>*/}
             {/*<PageTitle title={"My friends"}/>*/}
