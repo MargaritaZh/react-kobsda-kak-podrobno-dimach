@@ -1,14 +1,15 @@
 import {useState} from "react";
 
 type PropsType = {
-    // on: boolean
+
+    onChange:(on: boolean)=>void
 }
 
 
 function OnOff(props: PropsType) {
 
 console.log("OnOff rendering")
-    let [on, setOn] = useState(false)//hook with init value
+    let [on, setOn] = useState(false) //hook with init value
 
     console.log("on" + on)
     const onStyle = {
@@ -39,8 +40,16 @@ console.log("OnOff rendering")
     };
 
     return <div>
-        <div style={onStyle} onClick={()=>{setOn(true)}}>On</div>
-        <div style={offStyle} onClick={()=>{setOn(false)}}>Off</div>
+        <div style={onStyle} onClick={()=>{
+            setOn(true)
+            props.onChange(true)
+
+        }}>On</div>
+        <div style={offStyle} onClick={()=>{
+            setOn(false)
+            props.onChange(false)
+
+        }}>Off</div>
         <div style={indicatorStyle}></div>
     </div>
 }
