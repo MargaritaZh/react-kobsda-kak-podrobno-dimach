@@ -9,7 +9,9 @@ type AccordionPropsType = {
 export function Accordion(props: AccordionPropsType) {
         return (
             <div>
-                <AccordionTitle title={props.titleValue} onChange={props.onChange}/>
+                <AccordionTitle title={props.titleValue}
+                                onChange={props.onChange}
+                />
 
                 { !props.collapsed&&<AccordionBody/>}
             </div>
@@ -42,8 +44,9 @@ type AccordionTitlePropsType = {
 
 function AccordionTitle(props: AccordionTitlePropsType) {
     return (
-        <h3 onClick={props.onChange}>{props.title}</h3>
-    )
+        <h3 onClick={props.onChange}>---{props.title}---</h3>
+    // <h3 onClick={(event)=>props.onChange()}>---{props.title}---</h3>
+     )
 }
 
 function AccordionBody() {
@@ -55,3 +58,4 @@ function AccordionBody() {
         </ul>
     )
 }
+
