@@ -5,37 +5,36 @@ import {Accordion} from './Accordion';
 
 
 export default {
+    title:"Accordion stories",
     component: Accordion,
 };
 
 
-//чтобы работала вкладка action
-const onChangeHandler=action("onchange")
+//чтобы работала вкладка action экспортируем action
+const callback=action("accordion node change event fired")
 
 //===============
 //сами stories
 
-export const CollapsedAccordion = () => {
-    return <Accordion titleValue={"Collapsed Accordion"}
+export const MenuCollapsedMode = () => {
+    return <Accordion titleValue={"Menu"}
                       collapsed={true}
-                      onChange={onChangeHandler}/>
+                      onChange={callback}/>
 };
 
 
-export const OpenedAccordion = () => {
-    return <Accordion titleValue={"Opened Accordion"}
+
+export const UsersUnCollapsedMode = () => {
+    return <Accordion titleValue={"Users"}
                       collapsed={false}
-                      onChange={() => {
-                      }}/>
+                      onChange={callback}/>
 };
 
-export const AccordionDemo = () => {
+export const ModeChanging = () => {
 
-    const [collapsed, setCollapsed] = useState(false)
+    const [value, setValue] = useState(false)
 
     return <Accordion titleValue={"Accordion Demo"}
-                      collapsed={collapsed}
-                      onChange={() => {
-                          setCollapsed(!collapsed)
-                      }}/>
+                      collapsed={value}
+                      onChange={()=>setValue(!value)}/>
 };
