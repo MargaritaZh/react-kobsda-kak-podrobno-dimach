@@ -6,7 +6,7 @@ type PropsType = {
 }
 
 
-function OnOff(props: PropsType) {
+export function OnOff(props: PropsType) {
 
 console.log("OnOff rendering")
 
@@ -50,4 +50,3 @@ console.log("OnOff rendering")
 }
 
 
-export default OnOff
