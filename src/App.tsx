@@ -5,7 +5,6 @@ import {UncontrolledAccordion} from "./components/UncontroledAccordion/Uncontrol
 import {UncontrolledRating} from "./components/UncontrolledRating/UncontrolledRating";
 import {Rating, RatingValueType} from "./components/Rating/Rating";
 import {Accordion} from "./components/Accordion/Accordion";
-import UnControledOnOff from "./components/UncontroledOnOff/UnControledOnOff";
 import {OnOff} from "./components/OnOff/OnOff";
 
 
