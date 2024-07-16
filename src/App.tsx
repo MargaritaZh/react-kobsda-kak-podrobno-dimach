@@ -34,7 +34,10 @@ function App() {
 
             <Accordion titleValue={"Menu"}
                        collapsed={accordionCollabsed}
-                       onChange={()=>setAccordionCollabsed(!accordionCollabsed)}/>
+                       onChange={() => setAccordionCollabsed(!accordionCollabsed)}
+                       items={["Dimach","Valera","Artem","Victor"]}
+
+            />
 
             <Rating value={ratingValue} onClick={setRatingValue}/>
             {/*<Accordion titleValue={"Menu"} collapsed={false}/>*/}
