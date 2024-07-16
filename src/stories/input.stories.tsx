@@ -32,7 +32,7 @@ export const GetValueOfUncontrolledInputByButtonPress = () => {
         setValue(el.value)
     }
 
-    return <><input ref={inputRef} />
+    return <><input ref={inputRef}/>
         <button onClick={save}>save
         </button>
         -action value: {value}</>
@@ -40,19 +40,24 @@ export const GetValueOfUncontrolledInputByButtonPress = () => {
 
 
 export const ControlledInput = () => {
-    const[parentValue,setParentValue]=useState("")
+    const [parentValue, setParentValue] = useState("")
 
-
-    return <input value={parentValue} onChange={(e:ChangeEvent<HTMLInputElement>)=>setParentValue(e.currentTarget.value)}/>
-
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => setParentValue(e.currentTarget.value)
+    return <input value={parentValue} onChange={onChange}/>
 }
 
-export const ControlledCheckbox= () => {
+export const ControlledCheckbox = () => {
 
+    const [parentValue, setParentValue] = useState(true)
 
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => setParentValue(e.currentTarget.checked)
+
+    return <input type={"checkbox"} checked={parentValue}
+                  onChange={onChange}/>
 }
 
-export const ControlledSelect= () => {
+
+export const ControlledSelect = () => {
 
 
 }
