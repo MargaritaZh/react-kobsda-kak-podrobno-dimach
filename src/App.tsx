@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import './App.css'
 
-import {UncontrolledAccordion} from "./components/UncontroledAccordion/UncontrolledAccordion";
-import {UncontrolledRating} from "./components/UncontrolledRating/UncontrolledRating";
 import {Rating, RatingValueType} from "./components/Rating/Rating";
 import {Accordion} from "./components/Accordion/Accordion";
 import {OnOff} from "./components/OnOff/OnOff";
+import {Select} from "./components/Select/Select";
 
 
 function App() {
@@ -22,6 +21,11 @@ function App() {
         <div className={"App"}>
 
             <OnOff onChange={setSwitchOn} on={switchOn}/>
+            <Select value={'1'} onChange={()=>{}} items={[
+                { value: '1', title: 'Minsk' },
+                { value: '2', title: 'Moscow' },
+                { value: '3', title: 'Kiev' },
+            ]}/>
 
             {/*<UnControledOnOff onChange={setSwitchOn}/> {switchOn.toString()}*/}
 
@@ -32,12 +36,12 @@ function App() {
 
             {/*<UncontrolledRating />*/}
 
-            <Accordion titleValue={"Menu"}
-                       collapsed={accordionCollabsed}
-                       onChange={() => setAccordionCollabsed(!accordionCollabsed)}
-                       items={["Dimach","Valera","Artem","Victor"]}
+            {/*<Accordion titleValue={"Menu"}*/}
+            {/*           collapsed={accordionCollabsed}*/}
+            {/*           onChange={() => setAccordionCollabsed(!accordionCollabsed)}*/}
+            {/*           items={["Dimach","Valera","Artem","Victor"]}*/}
 
-            />
+            {/*/>*/}
 
             <Rating value={ratingValue} onClick={setRatingValue}/>
             {/*<Accordion titleValue={"Menu"} collapsed={false}/>*/}
