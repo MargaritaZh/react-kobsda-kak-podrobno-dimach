@@ -27,6 +27,7 @@ const UsersSecret = (props: { users: Array<string> }) => {
     )
 }
 
+
 const Users = React.memo(UsersSecret)
 
 
@@ -55,5 +56,4 @@ export const Example1 = () => {
             <Users users={users}/>
         </>
     )
-
 }
