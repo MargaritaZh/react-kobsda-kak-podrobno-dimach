@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from "react";
+import React, {useCallback, useMemo, useState} from "react";
 
 export default {
     title: "useMemo",
@@ -71,13 +71,13 @@ export const HelpToReactMemo = () => {
     const [users, setUsers] = useState(["Dimach", "Valera", "Arthem", "Katya"])
 
     const newArray = useMemo(() => {
-     const newAr=users.filter(u => u.toLowerCase().indexOf("a") > -1);
-       return  newAr
+        const newAr = users.filter(u => u.toLowerCase().indexOf("a") > -1);
+        return newAr
     }, [users])
 
 
     const addUser = () => {
-        const newUsers =[...users,"Sveta" + new Date().getTime()
+        const newUsers = [...users, "Sveta" + new Date().getTime()
         ]
         setUsers(newUsers)
     }
@@ -95,3 +95,73 @@ export const HelpToReactMemo = () => {
         <Users users={newArray}/>
     </>
 }
+
+
+export const LikeUseCallback = () => {
+
+    console.log("LikeUseCallback")
+
+    const [counter, setCounter] = useState(0)
+
+    const [books, setBooks] = useState(["React", "JS", "CSS", "HTML"])
+
+
+    // const addBook = () => {
+    //     const newUsers = [...books, "Angular" + new Date().getTime()
+    //     ]
+    //     setBooks(newUsers)
+    // }
+//запомни функцию пока у тебя не изменятся books и передадим ее в отрисовку где JSX
+//     const memoizedAddBook = useMemo(()=>{
+//         return addBook
+//     }, [books])
+//
+    //перепишем
+    const memoizedAddBook = useMemo(() => {
+        return () => {
+            const newUsers = [...books, "Angular" + new Date().getTime()]
+            setBooks(newUsers)
+        }
+    }, [books])
+
+
+//!!!!перепишеи на useCallback
+
+
+    const memoizedAddBook2 = useCallback(() => {
+        const newUsers = [...books, "Angular" + new Date().getTime()]
+        setBooks(newUsers)
+    }, [books])
+
+
+    return <>
+        <button onClick={() =>
+            setCounter(counter + 1)
+        }>+
+        </button>
+        {counter}
+        <Book addBook={memoizedAddBook2}/>
+    </>
+}
+
+
+type BooksSecretPropsType = {
+    addBook: () => void
+}
+
+const BooksSecret = (props: BooksSecretPropsType) => {
+
+    console.log("BooksSecret")
+    return <div>
+        <button onClick={() =>
+            props.addBook()
+        }>add book
+        </button>
+    </div>
+}
+
+//это контейнерная компанента, которая следит за пропсами, нужно ли перерисовывать
+
+const Book = React.memo(BooksSecret)
+
+
