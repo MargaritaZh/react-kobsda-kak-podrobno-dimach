@@ -11,8 +11,7 @@ export default {
 //сами stories
 
 export const BaseExample = () => {
-    return <Clock
-    />
+    return <Clock/>
 };
 
 
