@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import {clearInterval} from "node:timers";
 
 export default {
     title: "useEffect demo"
@@ -53,7 +54,7 @@ export const SimpleExample = () => {
 }
 
 
-export const SetTimeoutExample = () => {
+export const SetIntervalExample = () => {
     const [fake, setFake] = useState(1)
     const [counter, setCounter] = useState(1)
 
@@ -77,9 +78,13 @@ export const SetTimeoutExample = () => {
 
 
     useEffect(() => {
-        setInterval(() => {
+        const indervalId = setInterval(() => {
             setCounter(state => state + 1)
         }, 1000)
+
+        return () => {
+            clearInterval(indervalId)
+        }
     }, [])
 
     return <>
@@ -97,11 +102,11 @@ export const ResetEffectExample = () => {
     console.log("component rendered")
 
     useEffect(() => {
-        console.log("Effect occurred"+ counter)
+        console.log("Effect occurred" + counter)
 
 //сбросить эффект ,вернуть другую фунцию ,которая это сделает
-        return ()=>{
-            console.log("reset effect"+counter )
+        return () => {
+            console.log("reset effect" + counter)
         }
 
     }, [counter])
@@ -121,29 +126,28 @@ export const KeyTrackerExample = () => {
 
     const [text, setText] = useState("")
 
-    console.log("Component rendered with"+text)
+    console.log("Component rendered with" + text)
 
     useEffect(() => {
 
-        const handler=(e:KeyboardEvent)=>{
+        const handler = (e: KeyboardEvent) => {
             console.log(e.key)
-            setText((state)=>state+e.key)
+            setText((state) => state + e.key)
         }
 
-            window.document.addEventListener("keypress",handler)
+        window.document.addEventListener("keypress", handler)
 
-            //сбросить эффект ,вернуть другую фунцию ,которая это сделает
+        //сбросить эффект ,вернуть другую фунцию ,которая это сделает
 
-        return ()=>{
-                window.removeEventListener("keypress",handler)
+        return () => {
+            window.removeEventListener("keypress", handler)
         }
 
     }, [text])
 
 
-
     return <>
-       Type text:{text}
+        Type text:{text}
 
     </>
 
